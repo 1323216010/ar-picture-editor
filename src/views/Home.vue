@@ -12,11 +12,18 @@ var init = async () => {
   ])
   await player.addModule(...modules)
 
-  var a = new Effect(`./src/assets/effects/Hipster1.zip`)
   player.use(new Webcam())
   Dom.render(player, "#webar-app")
+
+  var Hipster1 = await Effect.preload(`./src/assets/effects/Hipster1.zip`)
+  var Hipster2 = await Effect.preload(`./src/assets/effects/Hipster2.zip`)
   return (name) => {
-    player.applyEffect(new Effect(`./src/assets/effects/${name}.zip`))
+    if(name === 'Hipster1') {
+      player.applyEffect(Hipster1)
+    }
+    if(name === 'Hipster2') {
+      player.applyEffect(Hipster2)
+    }
   }
 }
 var f
