@@ -16,7 +16,11 @@ var init = async () => {
   Dom.render(player, "#webar-app")
 
   var Hipster1 = await Effect.preload(`./src/assets/effects/Hipster1.zip`)
-  var Hipster2 = await Effect.preload(`./src/assets/effects/Hipster2.zip`)
+  var Hipster2 = {...Hipster1}
+  var face_low_BaseColor = await Effect.preload(`./src/assets/effects/face_low_BaseColor.zip`)
+  Hipster2._resource._data['images/face_low_BaseColor.png'] = face_low_BaseColor._resource._data['face_low_BaseColor.png']
+  console.log(Hipster2._resource._data['images/face_low_BaseColor.png'] === face_low_BaseColor._resource._data['face_low_BaseColor.png'])
+  console.log(Hipster1 === Hipster2)
   return (name) => {
     if(name === 'Hipster1') {
       player.applyEffect(Hipster1)
