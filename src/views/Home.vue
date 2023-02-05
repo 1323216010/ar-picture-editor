@@ -16,7 +16,7 @@ var init = async () => {
   player.use(new Webcam())
   Dom.render(player, "#webar-app")
   return (name) => {
-    player.applyEffect(new Effect(`./src/assets/effects/${name}.zip`))
+    player.applyEffect(new Effect(`@/assets/effects/${name}.zip`))
   }
 }
 var f
