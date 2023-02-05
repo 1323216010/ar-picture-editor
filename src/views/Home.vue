@@ -15,18 +15,18 @@ var init = async () => {
   player.use(new Webcam())
   Dom.render(player, "#webar-app")
 
-  var Hipster1 = await Effect.preload(`./src/assets/effects/Hipster1.zip`)
-  var Hipster2 = {...Hipster1}
-  var face_low_BaseColor = await Effect.preload(`./src/assets/effects/face_low_BaseColor.zip`)
-  Hipster2._resource._data['images/face_low_BaseColor.png'] = face_low_BaseColor._resource._data['face_low_BaseColor.png']
-  console.log(Hipster2._resource._data['images/face_low_BaseColor.png'] === face_low_BaseColor._resource._data['face_low_BaseColor.png'])
-  console.log(Hipster1 === Hipster2)
+  var Hipster = await Effect.preload(`./src/assets/effects/Hipster1.zip`)
+/*   var Hipster2 = deepClone(Hipster1) */
+  var face_low_BaseColor1 = await Effect.preload(`./src/assets/effects/face_low_BaseColor1.zip`)
+  var face_low_BaseColor2 = await Effect.preload(`./src/assets/effects/face_low_BaseColor.zip`)
   return (name) => {
     if(name === 'Hipster1') {
-      player.applyEffect(Hipster1)
+      Hipster._resource._data['images/face_low_BaseColor.png'] = face_low_BaseColor1._resource._data['face_low_BaseColor.png']
+      player.applyEffect(Hipster)
     }
     if(name === 'Hipster2') {
-      player.applyEffect(Hipster2)
+      Hipster._resource._data['images/face_low_BaseColor.png'] = face_low_BaseColor2._resource._data['face_low_BaseColor.png']
+      player.applyEffect(Hipster)
     }
   }
 }
