@@ -12,7 +12,7 @@ var init = async () => {
   ])
   await player.addModule(...modules)
 
-
+  var a = new Effect(`./src/assets/effects/Hipster1.zip`)
   player.use(new Webcam())
   Dom.render(player, "#webar-app")
   return (name) => {
